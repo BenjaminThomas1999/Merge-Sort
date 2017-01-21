@@ -33,7 +33,7 @@ std::vector<float> merge(std::vector<float> firstHalf, std::vector<float> second
 	return revCombined;
 }
 
-std::vector<float> mergeSort(std::vector<float> &inputArray){//for example [9, 8, 1] as input
+std::vector<float> mergeSort(std::vector<float> inputArray){//for example [9, 8, 1] as input
 	if(inputArray.size() > 1){
 		std::vector<float> firstHalf;
 		std::vector<float> secondHalf;
@@ -69,14 +69,12 @@ std::vector<float> floatVectorInput(){
 
 int main(){
 	std::cout << "Array to sort (separate by spaces): " << std::endl;
-	std::vector<float> inputArray = floatVectorInput();
-
-	std::vector<float> sorted = mergeSort(inputArray);
+	std::vector<float> arrayToSort = mergeSort(floatVectorInput());
 	
 	std::cout << std::endl << "Sorted Array:" << std::endl;	
-	for(int i = 0; i < sorted.size(); i++){
-		std::cout << sorted[i];
-		if(i == sorted.size()-1){
+	for(int i = 0; i < arrayToSort.size(); i++){
+		std::cout << arrayToSort[i];
+		if(i == arrayToSort.size()-1){
 			std::cout << std::endl << std::endl;
 		}else{
 			std::cout << ", ";
