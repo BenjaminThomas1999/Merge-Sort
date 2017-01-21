@@ -6,15 +6,26 @@ using namespace std;
 
 vector<float> merge(vector<float> firstHalf, vector<float> secondHalf){
 	vector<float> combined;
+	
 	for(int i = firstHalf.size() + secondHalf.size(); i > 0;  i--){//merge two vectors
-		if(firstHalf.back() > secondHalf.back() && !firstHalf.empty()){
+		if(!firstHalf.empty() && !secondHalf.empty() && firstHalf.back() > secondHalf.back() ){
 			combined.push_back(firstHalf.back());
 			firstHalf.pop_back();
-		}else if(!secondHalf.empty()){
+		}
+		else if(!firstHalf.empty() && !secondHalf.empty() && firstHalf.back() <= secondHalf.back() ){
+			combined.push_back(secondHalf.back());
+			secondHalf.pop_back();
+		}
+		else if(!firstHalf.empty() && secondHalf.empty()){
+			combined.push_back(firstHalf.back());
+			firstHalf.pop_back();
+		}
+		else if(firstHalf.empty() && !secondHalf.empty()){
 			combined.push_back(secondHalf.back());
 			secondHalf.pop_back();
 		}
 	}
+	
 	vector<float> revCombined;//reverse merged vectors. Vectors don't have pop_front and I didn't want to use lists.
 	
 	for(int i = 0; i < combined.size(); i++){
