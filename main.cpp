@@ -2,10 +2,9 @@
 #include <vector>
 #include <string>
 #include <sstream>
-using namespace std;
 
-vector<float> merge(vector<float> firstHalf, vector<float> secondHalf){
-	vector<float> combined;
+std::vector<float> merge(std::vector<float> firstHalf, std::vector<float> secondHalf){
+	std::vector<float> combined;
 	
 	for(int i = firstHalf.size() + secondHalf.size(); i > 0;  i--){//merge two vectors
 		if(!firstHalf.empty() && !secondHalf.empty() && firstHalf.back() > secondHalf.back() ){
@@ -26,7 +25,7 @@ vector<float> merge(vector<float> firstHalf, vector<float> secondHalf){
 		}
 	}
 	
-	vector<float> revCombined;//reverse merged vectors. Vectors don't have pop_front and I didn't want to use lists.
+	std::vector<float> revCombined;//reverse merged vectors. Vectors don't have pop_front and I didn't want to use lists.
 	
 	for(int i = 0; i < combined.size(); i++){
 		revCombined.push_back(combined[combined.size()-i-1]);
@@ -34,10 +33,10 @@ vector<float> merge(vector<float> firstHalf, vector<float> secondHalf){
 	return revCombined;
 }
 
-vector<float> mergeSort(vector<float> &inputArray){//for example [9, 8, 1] as input
+std::vector<float> mergeSort(std::vector<float> &inputArray){//for example [9, 8, 1] as input
 	if(inputArray.size() > 1){
-		vector<float> firstHalf;
-		vector<float> secondHalf;
+		std::vector<float> firstHalf;
+		std::vector<float> secondHalf;
 		
 		for(int i = 0; i < inputArray.size()/2; i++){//auto round the input array because size() returns int
 			firstHalf.push_back(inputArray[i]);
@@ -55,10 +54,10 @@ vector<float> mergeSort(vector<float> &inputArray){//for example [9, 8, 1] as in
 }
 
 
-vector<float> floatVectorInput(){
-	string inputString;
-    getline(cin, inputString);
-    vector<float> array;
+std::vector<float> floatVectorInput(){
+	std::string inputString;
+    getline(std::cin, inputString);
+    std::vector<float> array;
     std::istringstream iss(inputString);
     float val;
     while(iss >> val){
@@ -69,18 +68,18 @@ vector<float> floatVectorInput(){
 
 
 int main(){
-	cout << "Array to sort (separate by spaces): " << endl;
-	vector<float> inputArray = floatVectorInput();
+	std::cout << "Array to sort (separate by spaces): " << std::endl;
+	std::vector<float> inputArray = floatVectorInput();
 
-	vector<float> sorted = mergeSort(inputArray);
+	std::vector<float> sorted = mergeSort(inputArray);
 	
-	cout << endl << "Sorted Array:" << endl;	
+	std::cout << std::endl << "Sorted Array:" << std::endl;	
 	for(int i = 0; i < sorted.size(); i++){
-		cout << sorted[i];
+		std::cout << sorted[i];
 		if(i == sorted.size()-1){
-			cout << endl << endl;
+			std::cout << std::endl << std::endl;
 		}else{
-			cout << ", ";
+			std::cout << ", ";
 		}
 	}
 	return 0;
