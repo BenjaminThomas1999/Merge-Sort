@@ -44,31 +44,16 @@ vector<float> mergeSort(vector<float> &inputArray){//for example [9, 8, 1] as in
 }
 
 
-
-
-
-vector<string> split(string str, char delimiter) {
-	vector<string> internal;
-	stringstream ss(str); // Turn the string into a stream.
-	string tok;
-
-	while(getline(ss, tok, delimiter)) {
-		internal.push_back(tok);
-	}
-				  
-	return internal;
-}
 vector<float> floatVectorInput(){
 	string inputString;
-	getline(cin, inputString);
-
-	vector<string> stringArray = split(inputString, ' ');
-
-	vector<float> array; 
-	for(int i = 0; i < stringArray.size(); i++){
-		array.push_back(stof(stringArray[i]));
-	}
-	return array;	
+    getline(cin, inputString);
+    vector<float> array;
+    std::istringstream iss(inputString);
+    float val;
+    while(iss >> val){
+        array.push_back(val);
+    }
+    return array;  	
 }
 
 
